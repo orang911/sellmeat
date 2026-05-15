@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王帆 — 游戏美术 / 3D动效</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 导航 -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">WF</a>
+      <ul class="nav-links">
+        <li><a href="#works">作品</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 首屏 -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-name">王帆</h1>
+      <p class="hero-title">游戏美术 · 3D动效</p>
+      <p class="hero-desc">17年游戏美术经验，以3D动效为核心，覆盖角色动作、技能特效、场景氛围与UI动效的完整表现层</p>
+      <p class="hero-meta">武汉 · 18071146771 · WF_orang@foxmail.com</p>
+    </div>
+  </section>
+
+  <!-- 作品展示 -->
+  <section id="works" class="section">
+    <h2 class="section-title">作品展示</h2>
+
+    <!-- 筛选按钮 -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="video">视频</button>
+      <button class="filter-btn" data-filter="gif">GIF动效</button>
+      <button class="filter-btn" data-filter="image">静帧</button>
+    </div>
+
+    <!-- 作品网格 -->
+    <div class="gallery" id="gallery">
+      <!-- 作品项会由 JS 动态渲染，也可以在这里手动添加 -->
+    </div>
+  </section>
+
+  <!-- 代表项目 -->
+  <section id="projects" class="section section-alt">
+    <h2 class="section-title">代表项目</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>《我的勇者》<span class="tag">手游·ARPG</span></h3>
+        <p>负责核心战斗动效体系设计，覆盖主角全技能、BOSS机制特效、场景动态元素。动效满意度92%，游戏进入iOS休闲RPG榜TOP10。</p>
+      </div>
+      <div class="project-card">
+        <h3>《生命简史：古生物放置游戏》<span class="tag">独立手游</span></h3>
+        <p>主导美术全流程，从古生物角色概念到3D动效落地。TapTap评分8.2，美术好评率90%。</p>
+      </div>
+      <div class="project-card">
+        <h3>推金币 / 祖玛 / 网赚系列<span class="tag">休闲手游·IAA</span></h3>
+        <p>累计下载5000W+，流水2000W+美金。主导3D场景、金币物理碰撞动效、UI及结算动效。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section id="skills" class="section">
+    <h2 class="section-title">专业技能</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>引擎</h3>
+        <div class="skill-tags">
+          <span>Unity（主力）</span><span>Cocos</span><span>Godot</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>DCC工具</h3>
+        <div class="skill-tags">
+          <span>3ds Max</span><span>Maya</span><span>Blender</span><span>Spine</span><span>Photoshop</span><span>After Effects</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>动效方向</h3>
+        <div class="skill-tags">
+          <span>角色技能</span><span>连招节奏</span><span>场景交互</span><span>UI动效</span><span>粒子系统</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>其他</h3>
+        <div class="skill-tags">
+          <span>Shader基础</span><span>蒙皮绑定</span><span>手绘贴图</span><span>性能优化</span><span>AI辅助生产</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about" class="section section-alt">
+    <h2 class="section-title">关于我</h2>
+    <div class="about-content">
+      <p>17年游戏美术经验，页游、手游、H5、独立游戏、休闲游戏全品类覆盖。</p>
+      <p>以3D动效为核心，兼备3D模型、3D动画及美术管理能力，能独立覆盖从角色动作到UI动效的完整表现层。</p>
+      <p>擅长中小团队协作，适应多风格快速切换，兼顾视觉表现力与移动端性能。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="year">2021-2025</span> 武汉二月二 · 动效</div>
+        <div class="timeline-item"><span class="year">2019-2020</span> 深圳度莫 · H5游戏组长</div>
+        <div class="timeline-item"><span class="year">2014-2018</span> R2games · 3D动效</div>
+        <div class="timeline-item"><span class="year">2012-2014</span> 广州互爱 · 美术管理</div>
+        <div class="timeline-item"><span class="year">2011-2012</span> 广州4399 · 3D动效</div>
+        <div class="timeline-item"><span class="year">2008-2011</span> 武汉盛科/奇境 · 3D动画</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact" class="section">
+    <h2 class="section-title">联系我</h2>
+    <div class="contact-info">
+      <p>📧 WF_orang@foxmail.com</p>
+      <p>📱 18071146771</p>
+      <p>📍 武汉</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 王帆</p>
+  </footer>
+
+  <!-- 灯箱 -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content" id="lightbox-content"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
