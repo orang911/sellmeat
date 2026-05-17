@@ -5,4 +5,7 @@
 .nojekyll
 README.md
 wrangler.jsonc
+MEDIA_WORKFLOW.md
+tools/**
+media/source/**
 media/**/.gitkeep

@@ -3,29 +3,9 @@
 // ========================================
 
 // ========== 作品数据 ==========
-// 把你的作品文件放进 media/images/、media/videos/、media/gifs/、media/games/ 文件夹
-// 然后在这里添加对应的条目
-const works = [
-  // === 视频 ===
-  // { src: "media/videos/demo.mp4", type: "video", title: "3D技能特效演示" },
-  // { src: "media/videos/ui.mp4", type: "video", title: "UI动效合集" },
-
-  // === GIF ===
-  // { src: "media/gifs/skill.gif", type: "gif", title: "角色连招动效" },
-  // { src: "media/gifs/particle.gif", type: "gif", title: "粒子特效" },
-
-  // === 图片 ===
-  // { src: "media/images/render01.png", type: "image", title: "3D场景渲染" },
-  // { src: "media/images/char01.png", type: "image", title: "角色设计" },
-
-  // === 网页游戏 ===
-  // {
-  //   src: "media/games/demo/index.html",
-  //   type: "game",
-  //   title: "网页小游戏 Demo",
-  //   thumbnail: "media/images/game-demo-cover.jpg"
-  // },
-];
+// 作品列表由 tools/rebuild-works.ps1 生成到 media/works.js。
+// 公开素材放到 media/images/、media/videos/、media/gifs/、media/games/。
+const works = Array.isArray(window.portfolioWorks) ? window.portfolioWorks : [];
 
 // ========== 类型映射 ==========
 const badgeMap = { video: '视频', image: '静帧', gif: 'GIF动效', game: '网页游戏' };
