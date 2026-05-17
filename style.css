@@ -73,6 +73,45 @@ body {
 .filter-btn:hover { border-color: #555; color: #fff; }
 .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
+/* ---- B站链接添加面板 ---- */
+.add-panel {
+  display: none; align-items: center; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;
+}
+.add-panel.open { display: flex; }
+.add-panel input {
+  padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--surface); color: var(--text); font-size: 14px; outline: none;
+  transition: border-color 0.2s; min-width: 280px;
+}
+.add-panel input:focus { border-color: var(--accent); }
+.add-panel input::placeholder { color: #555; }
+#biliAdd {
+  padding: 8px 20px; border: none; border-radius: 6px;
+  background: var(--accent); color: #fff; cursor: pointer; font-size: 14px;
+}
+#biliAdd:hover { opacity: 0.85; }
+#biliAdd:disabled { opacity: 0.4; cursor: default; }
+.add-msg { font-size: 13px; color: var(--accent); }
+.add-msg.err { color: #f55; }
+
+/* ---- B站视频卡片 ---- */
+.bili-cover {
+  width: 100%; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: linear-gradient(135deg, #1a1a2e, #232340);
+}
+.bili-cover .play-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(240, 78, 78, 0.85);
+  display: flex; align-items: center; justify-content: center;
+}
+.bili-cover .play-icon::after {
+  content: ''; display: block; width: 0; height: 0;
+  border-left: 18px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+  margin-left: 4px;
+}
+.bili-cover span { color: var(--text); font-size: 13px; text-align: center; padding: 0 16px; }
+
 /* ---- 作品网格 ---- */
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
 .gallery-item {
@@ -159,6 +198,51 @@ body {
 .game-frame {
   width: min(1200px, 92vw); height: min(720px, 86vh);
   border: 0; border-radius: var(--radius); background: #000;
+}
+
+/* ---- 排序按钮 ---- */
+.sort-toggle {
+  padding: 8px 20px; border: 1px dashed var(--border); border-radius: 24px;
+  background: transparent; color: var(--text-dim); cursor: pointer; font-size: 14px;
+  transition: all 0.2s; margin-left: 8px;
+}
+.sort-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.sort-toggle.active { background: var(--accent); border-color: var(--accent); border-style: solid; color: #fff; }
+
+/* ---- 拖拽排序 ---- */
+.gallery.sort-mode .gallery-item { cursor: grab; position: relative; }
+.gallery.sort-mode .gallery-item:active { cursor: grabbing; }
+.gallery.sort-mode .gallery-item .overlay { display: none; }
+.gallery.sort-mode .gallery-item .badge { display: none; }
+
+.gallery-item.dragging { opacity: 0.35; transform: scale(0.95); }
+.gallery-item.drag-over { box-shadow: 0 0 0 3px var(--accent), 0 0 24px var(--accent-glow); }
+
+.drag-handle {
+  position: absolute; top: 8px; right: 8px; z-index: 5;
+  width: 32px; height: 32px; border-radius: 6px;
+  background: rgba(0,0,0,0.65); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: grab; pointer-events: auto;
+  opacity: 0; transition: opacity 0.2s;
+}
+.gallery.sort-mode .gallery-item:hover .drag-handle,
+.gallery.sort-mode .gallery-item .drag-handle { opacity: 1; }
+
+.delete-btn {
+  position: absolute; top: 8px; left: 8px; z-index: 5;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(220, 40, 40, 0.75); color: #fff; border: none;
+  font-size: 16px; line-height: 28px; text-align: center; cursor: pointer;
+  opacity: 0; transition: opacity 0.2s;
+}
+.gallery.sort-mode .gallery-item:hover .delete-btn,
+.gallery.sort-mode .gallery-item .delete-btn { opacity: 1; }
+.delete-btn:hover { background: rgba(255, 60, 60, 0.9); }
+
+.sort-hint {
+  grid-column: 1 / -1; text-align: center; padding: 12px;
+  color: var(--accent); font-size: 13px; margin-bottom: 8px;
 }
 
 /* ---- 响应式 ---- */
