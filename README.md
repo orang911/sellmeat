@@ -22,6 +22,30 @@ media/
 3. 运行 `tools/rebuild-works.ps1` 生成 `media/works.js`。
 4. 提交并推送到 GitHub。
 
+## 本地编辑、排序、删除和发布
+
+普通页面只读取 `media/settings.js` 里的正式配置。`?edit` 模式会先把排序、删除、B站视频保存成浏览器里的本地草稿，点“发布正式版”后才写入正式配置。
+
+启动本地编辑服务：
+
+```powershell
+.\tools\start-editor.ps1
+```
+
+然后打开：
+
+```text
+http://127.0.0.1:8765/index.html?edit
+```
+
+编辑流程：
+
+1. 点“排序”进入排序模式，拖拽作品调整顺序。
+2. 在排序模式里点作品左上角的 ×，把作品从草稿中删除。
+3. 点“完成”退出排序模式，检查作品展示。
+4. 点“发布正式版”，当前草稿会写入 `media/settings.js`。
+5. 提交并推送到 GitHub。
+
 如果手动维护 `media/works.js`，条目格式如下。
 
 图片：

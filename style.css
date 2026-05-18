@@ -64,6 +64,17 @@ body {
   content: ''; position: absolute; bottom: -8px; left: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 2px;
 }
 
+.bilibili-list-link {
+  margin: -28px 0 32px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.bilibili-list-link a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.bilibili-list-link a:hover { color: #fff; }
+
 /* ---- 筛选栏 ---- */
 .filter-bar { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
 .filter-btn {
@@ -93,6 +104,28 @@ body {
 #biliAdd:disabled { opacity: 0.4; cursor: default; }
 .add-msg { font-size: 13px; color: var(--accent); }
 .add-msg.err { color: #f55; }
+
+.export-panel {
+  display: none;
+  margin: -8px 0 24px;
+}
+.export-panel.open { display: block; }
+.export-panel p {
+  margin-bottom: 8px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.export-panel textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  resize: vertical;
+}
 
 /* ---- B站视频卡片 ---- */
 .bili-cover {
@@ -208,6 +241,19 @@ body {
 }
 .sort-toggle:hover { border-color: var(--accent); color: var(--accent); }
 .sort-toggle.active { background: var(--accent); border-color: var(--accent); border-style: solid; color: #fff; }
+.sort-toggle:disabled { opacity: 0.55; cursor: default; }
+.publish-toggle {
+  border-color: var(--accent);
+  border-style: solid;
+  color: var(--accent);
+}
+.publish-toggle:hover { background: var(--accent); color: #fff; }
+.editor-status {
+  align-self: center;
+  margin-left: 8px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
 
 /* ---- 拖拽排序 ---- */
 .gallery.sort-mode .gallery-item { cursor: grab; position: relative; }
