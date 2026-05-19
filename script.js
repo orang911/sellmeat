@@ -294,9 +294,15 @@ function renderGallery(filter = 'all') {
       const isVideo = work.type === 'video';
       const isGame = work.type === 'game';
       const isBili = work.type === 'bilibili';
+      const itemTag = isGame && !sortMode ? 'a' : 'div';
+      const launchAttr = sortMode
+        ? ''
+        : isGame
+        ? `href="${work.src}" target="_blank" rel="noopener"`
+        : `onclick="openLightbox('${work.src.replace(/'/g, "\\'")}', '${work.type}')"`;
       return `
-        <div class="gallery-item" draggable="${sortMode}" data-type="${work.type}" data-src="${work.src}" data-index="${i}"
-             ${sortMode ? '' : `onclick="openLightbox('${work.src.replace(/'/g, "\\'")}', '${work.type}')"`}>
+        <${itemTag} class="gallery-item" draggable="${sortMode}" data-type="${work.type}" data-src="${work.src}" data-index="${i}"
+             ${launchAttr}>
           ${sortMode ? '<button class="delete-btn" title="从草稿中删除此作品">&times;</button>' : ''}
           ${sortMode ? '<div class="drag-handle">⠿</div>' : ''}
           ${isBili
@@ -308,8 +314,8 @@ function renderGallery(filter = 'all') {
             : `<img src="${work.src}" alt="${work.title}" loading="lazy">`
           }
           <div class="badge">${badge}</div>
-          <div class="overlay"><span>查看</span></div>
-        </div>`;
+          <div class="overlay"><span>${isGame ? '开始游戏' : '查看'}</span></div>
+        </${itemTag}>`;
     }).join('');
 
   gallery.querySelectorAll('video').forEach(video => {

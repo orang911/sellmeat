@@ -1,4 +1,34 @@
 ﻿window.portfolioWorks = [
+  {
+    src: 'media/games/tetris1010/index.html',
+    type: 'game',
+    title: '1010 方块小游戏',
+    thumbnail: 'media/games/tetris1010/splash.png'
+  },
+  {
+    src: 'media/games/fast-fruit/index.html',
+    type: 'game',
+    title: '切水果',
+    thumbnail: 'media/games/fast-fruit/splash.png'
+  },
+  {
+    src: 'media/games/classic-2048/index.html',
+    type: 'game',
+    title: '经典 2048',
+    thumbnail: 'media/games/classic-2048/splash.png'
+  },
+  {
+    src: 'media/games/jump-joy/index.html',
+    type: 'game',
+    title: '跳一跳',
+    thumbnail: 'media/games/jump-joy/splash.03ce1.png'
+  },
+  {
+    src: 'media/games/feeding-birds/index.html',
+    type: 'game',
+    title: '喂鸟',
+    thumbnail: 'media/games/feeding-birds/splash.03ce1.png'
+  },
   { src: 'media/gifs/anim-001.gif', type: 'gif', title: 'GIF 001' },
   { src: 'media/gifs/anim-002.gif', type: 'gif', title: 'GIF 002' },
   { src: 'media/gifs/anim-003.gif', type: 'gif', title: 'GIF 003' },

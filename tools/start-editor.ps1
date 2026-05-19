@@ -167,12 +167,49 @@ function Serve-Static($Request, $Response) {
   Write-Response $Response 200 (Get-ContentType $fullPath) $bytes
 }
 
+# Check if the port is already in use by an existing server process.
+$existing = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue | Where-Object { $_.State -eq 'Listen' }
+if ($existing) {
+  $proc = Get-Process -Id $existing.OwningProcess -ErrorAction SilentlyContinue
+  Write-Host "Port $Port is already in use by $($proc.ProcessName) (PID $($existing.OwningProcess))."
+  Write-Host "Server is already running. Opening browser..."
+  Start-Process "http://127.0.0.1:${Port}/index.html?edit"
+  exit 0
+}
+
 $listener = [System.Net.HttpListener]::new()
 $prefix = "http://127.0.0.1:$Port/"
 $listener.Prefixes.Add($prefix)
-$listener.Start()
+
+$started = $false
+$retries = 3
+for ($i = 0; $i -lt $retries; $i++) {
+  try {
+    $listener.Start()
+    $started = $true
+    break
+  } catch [System.Net.HttpListenerException] {
+    if ($_.Exception.Message -match 'already|conflict|registered') {
+      Write-Host "Prefix conflict detected, cleaning up stale reservation..."
+      try { $listener.Close() } catch {}
+      # Force-remove stale URL ACL reservation left by a crashed process.
+      $cleanup = netsh http delete urlacl url="$prefix" 2>&1
+      if ($LASTEXITCODE -eq 0) { Write-Host "Stale reservation removed." }
+      Start-Sleep -Milliseconds 500
+    } else {
+      throw
+    }
+  }
+}
+
+if (-not $started) {
+  Write-Host "ERROR: Could not start server on $prefix after $retries attempts."
+  Write-Host "Try running as Administrator to clear stale HTTP reservations, or restart your machine."
+  exit 1
+}
 
 Write-Host "Portfolio editor: ${prefix}index.html?edit"
+Write-Host "Portfolio works:  ${prefix}index.html#works"
 Write-Host "Press Ctrl+C to stop."
 
 try {
