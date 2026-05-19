@@ -1,5 +1,11 @@
 ﻿window.portfolioWorks = [
   {
+    src: 'media/games/mergen-to10/index.html',
+    type: 'game',
+    title: '合并到 10',
+    thumbnail: 'media/games/mergen-to10/splash.85cfd.png'
+  },
+  {
     src: 'media/games/tetris1010/index.html',
     type: 'game',
     title: '1010 方块小游戏',
