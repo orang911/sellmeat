@@ -1,5 +1,11 @@
 ﻿window.portfolioWorks = [
   {
+    src: 'media/games/aircraft-war/index.html',
+    type: 'game',
+    title: '飞机大战',
+    thumbnail: 'media/games/aircraft-war/splash.85cfd.png'
+  },
+  {
     src: 'media/games/mergen-to10/index.html',
     type: 'game',
     title: '合并到 10',
