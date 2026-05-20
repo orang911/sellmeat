@@ -1,5 +1,11 @@
 ﻿window.portfolioWorks = [
   {
+    src: 'media/games/animal-puzzle/index.html',
+    type: 'game',
+    title: '动物拼图',
+    thumbnail: 'media/games/animal-puzzle/splash.85cfd.png'
+  },
+  {
     src: 'media/games/turnleft-turnright/index.html',
     type: 'game',
     title: '左右转弯',
