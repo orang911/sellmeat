@@ -19,12 +19,26 @@ const DRAFT_KEY = 'portfolio-editor-draft-v1';
 const LEGACY_SORT_KEY = 'portfolio-work-order';
 const LEGACY_HIDE_KEY = 'portfolio-hidden';
 const LEGACY_BILI_KEY = 'portfolio-bilibili';
+const GAME_SHELL_VERSION = '20260520-h5-shell';
 
 let draftSettings = editMode ? loadDraftSettings() : null;
 let sortMode = false;
 
 function asArray(value) {
   return Array.isArray(value) ? value : [];
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function getGameLaunchSrc(src) {
+  return src.includes('?') ? `${src}&v=${GAME_SHELL_VERSION}` : `${src}?v=${GAME_SHELL_VERSION}`;
 }
 
 function uniqueStrings(value) {
@@ -163,15 +177,28 @@ function applyOrder(list) {
 // ========== 合并B站视频 ==========
 function getFullList(filter) {
   const settings = getCurrentSettings();
-  let list = filter === 'all' ? [...works] : works.filter(work => work.type === filter);
+  let list;
+
+  if (!sortMode && filter === 'all') {
+    list = works.filter(work => work.type !== 'game');
+  } else if (!sortMode && filter === 'game') {
+    list = [];
+  } else {
+    list = filter === 'all' ? [...works] : works.filter(work => work.type === filter);
+  }
+
   if (filter === 'all' || filter === 'bilibili') {
     list = list.concat(settings.bilibili);
   }
   return list;
 }
 
+function getGameList() {
+  return applyOrder(getVisible(works.filter(work => work.type === 'game')));
+}
+
 // ========== 类型映射 ==========
-const badgeMap = { video: '视频', image: '静帧', gif: 'GIF动效', game: '网页游戏', bilibili: 'B站视频' };
+const badgeMap = { video: '视频', image: '静帧', gif: 'GIF动效', game: 'H5小游戏', bilibili: 'B站视频' };
 
 // ========== DOM ==========
 const sortToggle = document.getElementById('sortToggle');
@@ -182,6 +209,9 @@ const biliTitle = document.getElementById('biliTitle');
 const biliAdd = document.getElementById('biliAdd');
 const addMsg = document.getElementById('addMsg');
 const filterBar = document.querySelector('.filter-bar');
+const worksLayout = document.getElementById('worksLayout');
+const gameColumn = document.getElementById('gameColumn');
+const gameList = document.getElementById('gameList');
 
 function getActiveFilter() {
   const btn = document.querySelector('.filter-btn.active');
@@ -275,7 +305,18 @@ function renderGallery(filter = 'all') {
   list = getVisible(list);
   list = applyOrder(list);
 
+  const gameOnly = !sortMode && filter === 'game';
+  renderGameColumn(filter);
+  gallery.classList.toggle('is-hidden', gameOnly);
+
   gallery.classList.toggle('sort-mode', sortMode);
+
+  if (gameOnly) {
+    gallery.innerHTML = '';
+    updateRestoreBtn();
+    updateEditorStatus();
+    return;
+  }
 
   if (list.length === 0) {
     gallery.innerHTML = `
@@ -295,10 +336,11 @@ function renderGallery(filter = 'all') {
       const isGame = work.type === 'game';
       const isBili = work.type === 'bilibili';
       const itemTag = isGame && !sortMode ? 'a' : 'div';
+      const gameHref = isGame ? getGameLaunchSrc(work.src) : '';
       const launchAttr = sortMode
         ? ''
         : isGame
-        ? `href="${work.src}" target="_blank" rel="noopener"`
+        ? `href="${escapeHtml(gameHref)}" target="_blank" rel="noopener"`
         : `onclick="openLightbox('${work.src.replace(/'/g, "\\'")}', '${work.type}')"`;
       return `
         <${itemTag} class="gallery-item" draggable="${sortMode}" data-type="${work.type}" data-src="${work.src}" data-index="${i}"
@@ -344,13 +386,41 @@ function renderBiliCover(work) {
     </div>`;
 }
 
+function renderGameColumn(filter) {
+  if (!gameColumn || !gameList || !worksLayout) return;
+
+  const games = getGameList();
+  const showGames = !sortMode && games.length > 0 && (filter === 'all' || filter === 'game');
+  gameColumn.hidden = !showGames;
+  worksLayout.classList.toggle('has-game-column', showGames);
+  worksLayout.classList.toggle('only-games', showGames && filter === 'game');
+
+  if (!showGames) {
+    gameList.innerHTML = '';
+    return;
+  }
+
+  gameList.innerHTML = games.map(work => `
+    <a class="game-entry" href="${escapeHtml(getGameLaunchSrc(work.src))}" target="_blank" rel="noopener">
+      <span class="game-entry-media">
+        ${work.thumbnail
+          ? `<img src="${work.thumbnail}" alt="${escapeHtml(work.title)}" loading="lazy">`
+          : `<span class="game-entry-fallback">${escapeHtml(work.title)}</span>`
+        }
+      </span>
+      <span class="game-entry-title">${escapeHtml(work.title)}</span>
+      ${work.packageSize ? `<span class="game-entry-size">包体 ${escapeHtml(work.packageSize)}</span>` : ''}
+    </a>
+  `).join('');
+}
+
 function renderGameCover(work) {
   if (work.thumbnail) {
-    return `<img src="${work.thumbnail}" alt="${work.title}" loading="lazy">`;
+    return `<img src="${work.thumbnail}" alt="${escapeHtml(work.title)}" loading="lazy">`;
   }
   return `
     <div class="game-cover">
-      <span>${work.title}</span>
+      <span>${escapeHtml(work.title)}</span>
     </div>`;
 }
 

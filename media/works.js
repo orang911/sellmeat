@@ -3,73 +3,85 @@
     src: 'media/games/block1010/index.html',
     type: 'game',
     title: '方块1010',
-    thumbnail: 'media/games/block1010/splash.85cfd.png'
+    thumbnail: 'media/games/block1010/splash.85cfd.png',
+    packageSize: '3.29 MB'
   },
   {
     src: 'media/games/100-floors/index.html',
     type: 'game',
     title: '100层',
-    thumbnail: 'media/games/100-floors/splash.png'
+    thumbnail: 'media/games/100-floors/splash.png',
+    packageSize: '3.84 MB'
   },
   {
     src: 'media/games/catch-dots/index.html',
     type: 'game',
     title: '接球游戏',
-    thumbnail: 'media/games/catch-dots/splash.85cfd.png'
+    thumbnail: 'media/games/catch-dots/splash.85cfd.png',
+    packageSize: '1.64 MB'
   },
   {
     src: 'media/games/animal-puzzle/index.html',
     type: 'game',
     title: '动物拼图',
-    thumbnail: 'media/games/animal-puzzle/splash.85cfd.png'
+    thumbnail: 'media/games/animal-puzzle/splash.85cfd.png',
+    packageSize: '2.32 MB'
   },
   {
     src: 'media/games/turnleft-turnright/index.html',
     type: 'game',
     title: '左右转弯',
-    thumbnail: 'media/games/turnleft-turnright/splash.85cfd.png'
+    thumbnail: 'media/games/turnleft-turnright/splash.85cfd.png',
+    packageSize: '3.77 MB'
   },
   {
     src: 'media/games/aircraft-war/index.html',
     type: 'game',
     title: '飞机大战',
-    thumbnail: 'media/games/aircraft-war/splash.85cfd.png'
+    thumbnail: 'media/games/aircraft-war/splash.85cfd.png',
+    packageSize: '3.09 MB'
   },
   {
     src: 'media/games/mergen-to10/index.html',
     type: 'game',
     title: '合并到 10',
-    thumbnail: 'media/games/mergen-to10/splash.85cfd.png'
+    thumbnail: 'media/games/mergen-to10/splash.85cfd.png',
+    packageSize: '2.20 MB'
   },
   {
     src: 'media/games/tetris1010/index.html',
     type: 'game',
     title: '1010 方块小游戏',
-    thumbnail: 'media/games/tetris1010/splash.png'
+    thumbnail: 'media/games/tetris1010/splash.png',
+    packageSize: '4.60 MB'
   },
   {
     src: 'media/games/fast-fruit/index.html',
     type: 'game',
     title: '切水果',
-    thumbnail: 'media/games/fast-fruit/splash.png'
+    thumbnail: 'media/games/fast-fruit/splash.png',
+    packageSize: '3.92 MB'
   },
   {
     src: 'media/games/classic-2048/index.html',
     type: 'game',
     title: '经典 2048',
-    thumbnail: 'media/games/classic-2048/splash.85cfd.png'
+    thumbnail: 'media/games/classic-2048/splash.85cfd.png',
+    packageSize: '2.44 MB'
   },
   {
     src: 'media/games/jump-joy/index.html',
     type: 'game',
     title: '跳一跳',
-    thumbnail: 'media/games/jump-joy/splash.03ce1.png'
+    thumbnail: 'media/games/jump-joy/splash.03ce1.png',
+    packageSize: '3.63 MB'
   },
   {
     src: 'media/games/feeding-birds/index.html',
     type: 'game',
     title: '喂鸟',
-    thumbnail: 'media/games/feeding-birds/splash.03ce1.png'
+    thumbnail: 'media/games/feeding-birds/splash.03ce1.png',
+    packageSize: '6.01 MB'
   },
   { src: 'media/gifs/anim-001.gif', type: 'gif', title: 'GIF 001' },
   { src: 'media/gifs/anim-002.gif', type: 'gif', title: 'GIF 002' },

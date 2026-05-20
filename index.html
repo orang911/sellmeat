@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>王帆 — 游戏美术 / 3D动效</title>
-  <link rel="stylesheet" href="style.css?v=20260520-block1010-repair">
+  <link rel="stylesheet" href="style.css?v=20260520-h5-shell">
 </head>
 <body>
 
@@ -116,7 +116,7 @@
       <button class="filter-btn" data-filter="video">视频</button>
       <button class="filter-btn" data-filter="gif">GIF动效</button>
       <button class="filter-btn" data-filter="image">静帧</button>
-      <button class="filter-btn" data-filter="game">网页游戏</button>
+      <button class="filter-btn" data-filter="game">H5小游戏</button>
       <button class="filter-btn" data-filter="bilibili">B站视频</button>
       <button class="sort-toggle" id="sortToggle" title="拖拽排序">排序</button>
       <button class="sort-toggle" id="addBilibiliBtn" title="添加B站视频链接">＋添加B站</button>
@@ -130,9 +130,16 @@
       <span class="add-msg" id="addMsg"></span>
     </div>
 
-    <!-- 作品网格 -->
-    <div class="gallery" id="gallery">
-      <!-- 作品项会由 JS 动态渲染，也可以在这里手动添加 -->
+    <div class="works-layout" id="worksLayout">
+      <aside class="game-column" id="gameColumn" hidden>
+        <h3>H5小游戏</h3>
+        <div class="game-list" id="gameList"></div>
+      </aside>
+
+      <!-- 作品网格 -->
+      <div class="gallery" id="gallery">
+        <!-- 作品项会由 JS 动态渲染，也可以在这里手动添加 -->
+      </div>
     </div>
   </section>
 
@@ -156,8 +163,8 @@
     <div class="lightbox-content" id="lightbox-content"></div>
   </div>
 
-  <script src="media/works.js?v=20260520-block1010-repair"></script>
-  <script src="media/settings.js?v=20260520-block1010-repair"></script>
-  <script src="script.js?v=20260520-block1010-repair"></script>
+  <script src="media/works.js?v=20260520-h5-shell"></script>
+  <script src="media/settings.js?v=20260520-h5-shell"></script>
+  <script src="script.js?v=20260520-h5-shell"></script>
 </body>
 </html>

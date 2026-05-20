@@ -152,8 +152,89 @@ body {
 }
 .bili-cover span { color: var(--text); font-size: 13px; text-align: center; padding: 0 16px; }
 
-/* ---- 作品网格 ---- */
+/* ---- H5小游戏列 & 作品网格 ---- */
+.works-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.works-layout.has-game-column,
+.works-layout.only-games { grid-template-columns: minmax(0, 1fr); }
+
+.game-column {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.game-column h3 {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.3;
+}
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(132px, calc((100% - 60px) / 6)), 1fr));
+  gap: 12px;
+  overflow: visible;
+  padding-bottom: 0;
+}
+.game-entry {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.game-entry-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #181818, #2b2222);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.game-entry:hover .game-entry-media {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.game-entry-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.game-entry-fallback {
+  padding: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.35;
+}
+.game-entry-title {
+  display: block;
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.game-entry-size {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-dim);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.gallery.is-hidden { display: none; }
 .gallery-item {
   display: block;
   position: relative; border-radius: var(--radius); overflow: hidden;
@@ -163,6 +244,11 @@ body {
 .gallery-item:hover { transform: scale(1.02); }
 .gallery-item img,
 .gallery-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-item[data-type="gif"] img {
+  object-fit: contain;
+  padding: 8px;
+  background: #0d0d0d;
+}
 .game-cover {
   width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
   padding: 24px; text-align: center; background: linear-gradient(135deg, #181818, #2b2222);
@@ -306,6 +392,9 @@ body {
   .section-alt { padding: 64px 16px; }
   .section-title { font-size: 22px; margin-bottom: 32px; }
   .hero-name { letter-spacing: 4px; }
+  .works-layout.has-game-column,
+  .works-layout.only-games { grid-template-columns: 1fr; }
+  .game-column { padding: 12px; }
   .gallery { grid-template-columns: 1fr; }
   .nav-links { gap: 20px; }
   .nav-links a { font-size: 13px; }
