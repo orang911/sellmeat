@@ -45,7 +45,7 @@
     src: 'media/games/classic-2048/index.html',
     type: 'game',
     title: '经典 2048',
-    thumbnail: 'media/games/classic-2048/splash.png'
+    thumbnail: 'media/games/classic-2048/splash.85cfd.png'
   },
   {
     src: 'media/games/jump-joy/index.html',
