@@ -1,5 +1,11 @@
 ﻿window.portfolioWorks = [
   {
+    src: 'media/games/block1010/index.html',
+    type: 'game',
+    title: '方块1010',
+    thumbnail: 'media/games/block1010/splash.85cfd.png'
+  },
+  {
     src: 'media/games/100-floors/index.html',
     type: 'game',
     title: '100层',
