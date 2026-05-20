@@ -1,5 +1,11 @@
 ﻿window.portfolioWorks = [
   {
+    src: 'media/games/catch-dots/index.html',
+    type: 'game',
+    title: '接球游戏',
+    thumbnail: 'media/games/catch-dots/splash.85cfd.png'
+  },
+  {
     src: 'media/games/animal-puzzle/index.html',
     type: 'game',
     title: '动物拼图',
