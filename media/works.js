@@ -1,5 +1,11 @@
 ﻿window.portfolioWorks = [
   {
+    src: 'media/games/100-floors/index.html',
+    type: 'game',
+    title: '100层',
+    thumbnail: 'media/games/100-floors/splash.png'
+  },
+  {
     src: 'media/games/catch-dots/index.html',
     type: 'game',
     title: '接球游戏',
