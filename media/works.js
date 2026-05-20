@@ -1,5 +1,11 @@
 ﻿window.portfolioWorks = [
   {
+    src: 'media/games/turnleft-turnright/index.html',
+    type: 'game',
+    title: '左右转弯',
+    thumbnail: 'media/games/turnleft-turnright/splash.85cfd.png'
+  },
+  {
     src: 'media/games/aircraft-war/index.html',
     type: 'game',
     title: '飞机大战',
