@@ -400,3 +400,21 @@ body {
   .nav-links a { font-size: 13px; }
   .contact-info { flex-direction: column; gap: 12px; }
 }
+
+/* ========== Load More Button ========== */
+.load-more-btn {
+  display: block;
+  margin: 32px auto 16px;
+  padding: 12px 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.load-more-btn:hover {
+  background: #2a2a2a;
+  border-color: #4a9eff;
+}

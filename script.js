@@ -197,6 +197,11 @@ function getGameList() {
   return applyOrder(getVisible(works.filter(work => work.type === 'game')));
 }
 
+// ========== 分页 ==========
+const ITEMS_PER_PAGE = 24;
+let galleryPage = 1;
+let currentFilter = 'all';
+
 // ========== 类型映射 ==========
 const badgeMap = { video: '视频', image: '静帧', gif: 'GIF动效', game: 'H5小游戏', bilibili: 'B站视频' };
 
@@ -235,6 +240,7 @@ sortToggle.addEventListener('click', () => {
   if (sortMode) {
     setActiveFilter('all');
     closeAddPanel();
+    galleryPage = 1;
   }
 
   renderGallery(sortMode ? 'all' : getActiveFilter());
@@ -300,6 +306,11 @@ function showMsg(text, isErr) {
 
 // ========== 渲染作品 ==========
 function renderGallery(filter = 'all') {
+  // 切换筛选时重置分页
+  if (filter !== currentFilter) {
+    currentFilter = filter;
+    galleryPage = 1;
+  }
   const gallery = document.getElementById('gallery');
   let list = getFullList(filter);
   list = getVisible(list);
@@ -313,6 +324,7 @@ function renderGallery(filter = 'all') {
 
   if (gameOnly) {
     gallery.innerHTML = '';
+    removeLoadMore();
     updateRestoreBtn();
     updateEditorStatus();
     return;
@@ -324,13 +336,18 @@ function renderGallery(filter = 'all') {
         <p style="font-size:48px;">🎬</p>
         <p>暂无作品展示</p>
       </div>`;
+    removeLoadMore();
     updateRestoreBtn();
     updateEditorStatus();
     return;
   }
 
+  // 分页：排序模式下显示全部，普通模式下分批加载
+  const totalItems = sortMode ? list.length : galleryPage * ITEMS_PER_PAGE;
+  const visibleList = sortMode ? list : list.slice(0, totalItems);
+
   gallery.innerHTML = (sortMode ? '<div class="sort-hint">拖拽排序 · 点 × 删除 · 完成后点「完成」</div>' : '')
-    + list.map((work, i) => {
+    + visibleList.map((work, i) => {
       const badge = badgeMap[work.type];
       const isVideo = work.type === 'video';
       const isGame = work.type === 'game';
@@ -352,7 +369,7 @@ function renderGallery(filter = 'all') {
             : isGame
             ? renderGameCover(work)
             : isVideo
-            ? `<video src="${work.src}" muted loop preload="metadata"></video>`
+            ? `<video src="${work.src}" muted loop preload="none"></video>`
             : `<img src="${work.src}" alt="${work.title}" loading="lazy">`
           }
           <div class="badge">${badge}</div>
@@ -374,8 +391,35 @@ function renderGallery(filter = 'all') {
 
   if (sortMode) setupDrag(gallery);
 
+  // 加载更多按钮
+  if (!sortMode && totalItems < list.length) {
+    renderLoadMore(gallery, list.length);
+  } else {
+    removeLoadMore();
+  }
+
   updateRestoreBtn();
   updateEditorStatus();
+}
+
+function renderLoadMore(gallery, total) {
+  removeLoadMore();
+  const btn = document.createElement('button');
+  btn.id = 'loadMoreBtn';
+  btn.className = 'load-more-btn';
+  const remaining = total - galleryPage * ITEMS_PER_PAGE;
+  btn.textContent = `加载更多（剩余 ${remaining} 项）`;
+  btn.addEventListener('click', () => {
+    galleryPage++;
+    renderGallery(currentFilter);
+    document.getElementById('loadMoreBtn')?.scrollIntoView({ behavior: 'smooth' });
+  });
+  gallery.after(btn);
+}
+
+function removeLoadMore() {
+  const btn = document.getElementById('loadMoreBtn');
+  if (btn) btn.remove();
 }
 
 function renderBiliCover(work) {
@@ -491,6 +535,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     if (sortMode) return;
     closeAddPanel();
+    galleryPage = 1;
+    currentFilter = btn.dataset.filter;
     setActiveFilter(btn.dataset.filter);
     renderGallery(btn.dataset.filter);
   });
