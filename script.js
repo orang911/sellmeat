@@ -199,6 +199,7 @@ function getGameList() {
 
 // ========== 分页 ==========
 const ITEMS_PER_PAGE = 24;
+const GIF_DISPLAY_LIMIT = 15;
 let galleryPage = 1;
 let currentFilter = 'all';
 
@@ -316,6 +317,23 @@ function renderGallery(filter = 'all') {
   list = getVisible(list);
   list = applyOrder(list);
 
+  // GIF显示限制：最多展示前15张，其余提供下载
+  let gifExcessCount = 0;
+  if (!sortMode && (filter === 'gif' || filter === 'all')) {
+    let gifCount = 0;
+    const limited = [];
+    for (const w of list) {
+      if (w.type === 'gif') {
+        gifCount++;
+        if (gifCount <= GIF_DISPLAY_LIMIT) limited.push(w);
+        else gifExcessCount++;
+      } else {
+        limited.push(w);
+      }
+    }
+    list = limited;
+  }
+
   const gameOnly = !sortMode && filter === 'game';
   renderGameColumn(filter);
   gallery.classList.toggle('is-hidden', gameOnly);
@@ -325,6 +343,7 @@ function renderGallery(filter = 'all') {
   if (gameOnly) {
     gallery.innerHTML = '';
     removeLoadMore();
+    removeGifDownloadBanner();
     updateRestoreBtn();
     updateEditorStatus();
     return;
@@ -337,6 +356,7 @@ function renderGallery(filter = 'all') {
         <p>暂无作品展示</p>
       </div>`;
     removeLoadMore();
+    removeGifDownloadBanner();
     updateRestoreBtn();
     updateEditorStatus();
     return;
@@ -391,11 +411,16 @@ function renderGallery(filter = 'all') {
 
   if (sortMode) setupDrag(gallery);
 
-  // 加载更多按钮
+  // 加载更多 / GIF下载打包
   if (!sortMode && totalItems < list.length) {
     renderLoadMore(gallery, list.length);
+    removeGifDownloadBanner();
+  } else if (!sortMode && gifExcessCount > 0) {
+    removeLoadMore();
+    renderGifDownloadBanner(gifExcessCount);
   } else {
     removeLoadMore();
+    removeGifDownloadBanner();
   }
 
   updateRestoreBtn();
@@ -420,6 +445,28 @@ function renderLoadMore(gallery, total) {
 function removeLoadMore() {
   const btn = document.getElementById('loadMoreBtn');
   if (btn) btn.remove();
+}
+
+function renderGifDownloadBanner(excess) {
+  removeGifDownloadBanner();
+  const banner = document.createElement('div');
+  banner.id = 'gifDownloadBanner';
+  banner.className = 'gif-download-banner';
+  banner.innerHTML = `
+    <div class="gif-download-info">
+      <span class="gif-download-icon">📦</span>
+      <span>已展示前 ${GIF_DISPLAY_LIMIT} 张GIF动效，还有 ${excess} 张可下载查看</span>
+    </div>
+    <a href="media/gifs-pack.zip" class="gif-download-btn" download>
+      <span>下载全部GIF打包</span>
+      <span class="gif-download-size">ZIP · 约 106 MB</span>
+    </a>`;
+  gallery.after(banner);
+}
+
+function removeGifDownloadBanner() {
+  const banner = document.getElementById('gifDownloadBanner');
+  if (banner) banner.remove();
 }
 
 function renderBiliCover(work) {
