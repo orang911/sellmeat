@@ -83,6 +83,12 @@
     thumbnail: 'media/games/feeding-birds/game-logo.png',
     packageSize: '6.01 MB'
   },
+  { src: 'media/videos/skill.mp4', type: 'video', title: '技能' },
+  { src: 'media/videos/q-skill.mp4', type: 'video', title: 'Q版技能' },
+  { src: 'media/videos/shader-render.mp4', type: 'video', title: 'Shader渲染' },
+  { src: 'media/videos/model-shader.mp4', type: 'video', title: '模型Shader' },
+  { src: 'media/videos/ui-effect.mp4', type: 'video', title: 'UI效果' },
+  { src: 'media/videos/ui-interface.mp4', type: 'video', title: 'UI界面' },
   { src: 'media/gifs/anim-001.gif', type: 'gif', title: 'GIF 001' },
   { src: 'media/gifs/anim-002.gif', type: 'gif', title: 'GIF 002' },
   { src: 'media/gifs/anim-003.gif', type: 'gif', title: 'GIF 003' },
