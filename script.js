@@ -793,6 +793,46 @@ function setupEditorControls() {
   updateEditorStatus();
 }
 
+// ========== 桌面/手机导航状态 ==========
+function setupResponsiveNav() {
+  const navLinks = [...document.querySelectorAll('[data-section]')];
+  const sections = [...document.querySelectorAll('#home, #skills, #about, #works, #contact')];
+  if (!navLinks.length || !sections.length) return;
+
+  function setActiveSection(sectionId) {
+    navLinks.forEach(link => {
+      const active = link.dataset.section === sectionId;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function updateActiveSection() {
+    const marker = window.scrollY + window.innerHeight * 0.38;
+    let activeSection = sections[0].id;
+
+    sections.forEach(section => {
+      if (section.offsetTop <= marker) activeSection = section.id;
+    });
+
+    setActiveSection(activeSection);
+  }
+
+  let navFrame = 0;
+  window.addEventListener('scroll', () => {
+    if (navFrame) return;
+    navFrame = window.requestAnimationFrame(() => {
+      updateActiveSection();
+      navFrame = 0;
+    });
+  }, { passive: true });
+
+  window.addEventListener('resize', updateActiveSection);
+  navLinks.forEach(link => link.addEventListener('click', () => setActiveSection(link.dataset.section)));
+  updateActiveSection();
+}
+
 // ========== 初始渲染 ==========
 if (!editMode) {
   sortToggle.style.display = 'none';
@@ -802,4 +842,5 @@ if (!editMode) {
   setupEditorControls();
 }
 
+setupResponsiveNav();
 renderGallery();

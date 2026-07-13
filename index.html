@@ -4,20 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>王帆 — 游戏美术 / 3D动效</title>
-  <link rel="stylesheet" href="style.css?v=20260713-h5-portrait">
+  <link rel="stylesheet" href="style.css?v=20260714-project-backgrounds">
 </head>
 <body>
+
+  <!-- 本地图标精灵：不依赖外部图标库 -->
+  <svg class="icon-sprite" aria-hidden="true">
+    <symbol id="icon-home" viewBox="0 0 24 24">
+      <path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/>
+    </symbol>
+    <symbol id="icon-works" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="16" rx="3"/><path d="m9.5 9 6 3-6 3V9Z"/>
+    </symbol>
+    <symbol id="icon-skills" viewBox="0 0 24 24">
+      <path d="M4 7h10M18 7h2M4 17h2M10 17h10M4 12h4M12 12h8"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/><circle cx="10" cy="12" r="2"/>
+    </symbol>
+    <symbol id="icon-about" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>
+    </symbol>
+    <symbol id="icon-contact" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>
+    </symbol>
+    <symbol id="icon-engine" viewBox="0 0 24 24">
+      <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m8 9 4-2 4 2v5l-4 3-4-3V9Z"/>
+    </symbol>
+    <symbol id="icon-dcc" viewBox="0 0 24 24">
+      <path d="m12 3 8 4-8 4-8-4 8-4Z"/><path d="m4 12 8 4 8-4M4 17l8 4 8-4"/>
+    </symbol>
+    <symbol id="icon-motion" viewBox="0 0 24 24">
+      <path d="m13 2-2 7h6l-8 13 2-9H5l8-11Z"/>
+    </symbol>
+    <symbol id="icon-ai" viewBox="0 0 24 24">
+      <rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 10h6M9 14h3M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M18 9h4M2 15h4M18 15h4"/>
+    </symbol>
+    <symbol id="icon-other" viewBox="0 0 24 24">
+      <path d="M4 7h16v13H4zM9 7V4h6v3M9 12h6"/><path d="M4 14h16"/>
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path d="M7 3h3l1.5 4-2 1.5a15 15 0 0 0 6 6l1.5-2L21 14v3c0 2-2 4-4 4A14 14 0 0 1 3 7c0-2 2-4 4-4Z"/>
+    </symbol>
+  </svg>
 
   <!-- 导航 -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">WF</a>
-      <ul class="nav-links">
-        <li><a href="#works">作品</a></li>
-        <li><a href="#skills">技能</a></li>
-        <li><a href="#about">关于</a></li>
-        <li><a href="#contact">联系</a></li>
+      <ul class="nav-links" aria-label="主导航">
+        <li><a href="#home" data-section="home">首页</a></li>
+        <li><a href="#works" data-section="works">作品展示</a></li>
+        <li><a href="#skills" data-section="skills">专业技能</a></li>
+        <li><a href="#about" data-section="about">关于我</a></li>
+        <li><a href="#contact" data-section="contact">联系我</a></li>
       </ul>
+      <div class="nav-contact" aria-label="联系方式">
+        <a href="mailto:WF_orang@foxmail.com">
+          <svg aria-hidden="true"><use href="#icon-contact"></use></svg>
+          <span>WF_orang@foxmail.com</span>
+        </a>
+        <a href="tel:18071146771">
+          <svg aria-hidden="true"><use href="#icon-phone"></use></svg>
+          <span>18071146771</span>
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -26,30 +74,38 @@
     <div class="hero-content">
       <h1 class="hero-name">王帆</h1>
       <p class="hero-title">游戏美术 · 3D动效</p>
-      <p class="hero-desc">17年游戏美术经验，以3D动效为核心，精通角色动画、技能特效、场景氛围及UI动效的全链路表现层设计。深度整合AI工具辅助全流程制作，从概念预演、资产生成到动效落地，以AI提效驱动更高品质的视觉表达。</p>
+      <p class="hero-summary"><span>17年游戏美术经验</span><span>以3D动效为核心</span></p>
+      <div class="hero-actions">
+        <a class="hero-action hero-action-primary" href="#works">作品展示</a>
+        <a class="hero-action" href="#contact">联系我</a>
+      </div>
       <p class="hero-meta">武汉 · 18071146771 · WF_orang@foxmail.com</p>
     </div>
   </section>
 
   <!-- 代表项目 -->
   <section id="projects" class="section section-alt">
-    <h2 class="section-title">代表项目</h2>
+    <h2 class="section-title">精选项目</h2>
     <div class="projects-grid">
-      <div class="project-card">
-        <h3>《我的勇者》<span class="tag">手游·ARPG</span></h3>
-        <p>负责核心战斗动效体系设计，覆盖主角全技能、BOSS机制特效、场景动态元素。动效满意度92%，游戏进入iOS休闲RPG榜TOP10。</p>
+      <div class="project-card project-card--my-hero">
+        <span class="project-index" aria-hidden="true">01</span>
+        <div><h3>《我的勇者》<span class="tag">手游·ARPG</span></h3>
+        <p>负责核心战斗动效体系设计，覆盖主角全技能、BOSS机制特效、场景动态元素。动效满意度92%，游戏进入iOS休闲RPG榜TOP10。</p></div>
       </div>
-      <div class="project-card">
-        <h3>《生命简史：古生物放置游戏》<span class="tag">独立手游</span></h3>
-        <p>主导美术全流程，从古生物角色概念到3D动效落地。TapTap评分8.2，美术好评率90%。</p>
+      <div class="project-card project-card--life">
+        <span class="project-index" aria-hidden="true">02</span>
+        <div><h3>《生命简史：古生物放置游戏》<span class="tag">独立手游</span></h3>
+        <p>主导美术全流程，从古生物角色概念到3D动效落地。TapTap评分8.2，美术好评率90%。</p></div>
       </div>
-      <div class="project-card">
-        <h3>推金币 / 祖玛 / 网赚系列<span class="tag">休闲手游·IAA</span></h3>
-        <p>累计下载5000W+，流水2000W+美金。主导3D场景、金币物理碰撞动效、UI及结算动效。</p>
+      <div class="project-card project-card--casual">
+        <span class="project-index" aria-hidden="true">03</span>
+        <div><h3>推金币 / 祖玛 / 网赚系列<span class="tag">休闲手游·IAA</span></h3>
+        <p>累计下载5000W+，流水2000W+美金。主导3D场景、金币物理碰撞动效、UI及结算动效。</p></div>
       </div>
-      <div class="project-card">
-        <h3>《神武九天》<span class="tag">页游·ARPG/MMO</span></h3>
-        <p>4399期间参与页游ARPG/MMO项目，项目月流水千万级别。参与项目3D动作和特效设计制作。</p>
+      <div class="project-card project-card--shenwu">
+        <span class="project-index" aria-hidden="true">04</span>
+        <div><h3>《神武九天》<span class="tag">页游·ARPG/MMO</span></h3>
+        <p>4399期间参与页游ARPG/MMO项目，项目月流水千万级别。参与项目3D动作和特效设计制作。</p></div>
       </div>
     </div>
   </section>
@@ -59,31 +115,31 @@
     <h2 class="section-title">专业技能</h2>
     <div class="skills-grid">
       <div class="skill-category">
-        <h3>引擎</h3>
+        <div class="skill-heading"><span class="skill-icon"><svg aria-hidden="true"><use href="#icon-engine"></use></svg></span><h3>引擎</h3></div>
         <div class="skill-tags">
           <span>Unity（主力）</span><span>Cocos</span><span>Godot</span>
         </div>
       </div>
       <div class="skill-category">
-        <h3>DCC工具</h3>
+        <div class="skill-heading"><span class="skill-icon"><svg aria-hidden="true"><use href="#icon-dcc"></use></svg></span><h3>DCC工具</h3></div>
         <div class="skill-tags">
           <span>3ds Max</span><span>Maya</span><span>Blender</span><span>Spine</span><span>Photoshop</span><span>After Effects</span>
         </div>
       </div>
       <div class="skill-category">
-        <h3>动效方向</h3>
+        <div class="skill-heading"><span class="skill-icon"><svg aria-hidden="true"><use href="#icon-motion"></use></svg></span><h3>动效方向</h3></div>
         <div class="skill-tags">
           <span>角色技能</span><span>连招节奏</span><span>场景交互</span><span>UI动效</span><span>粒子系统</span>
         </div>
       </div>
       <div class="skill-category">
-        <h3>AI辅助</h3>
+        <div class="skill-heading"><span class="skill-icon"><svg aria-hidden="true"><use href="#icon-ai"></use></svg></span><h3>AI辅助</h3></div>
         <div class="skill-tags">
           <span>AI概念预演</span><span>AI资产生成</span><span>AI纹理/贴图</span><span>ComfyUI</span><span>Stable Diffusion</span><span>AI辅助脚本</span>
         </div>
       </div>
       <div class="skill-category">
-        <h3>其他</h3>
+        <div class="skill-heading"><span class="skill-icon"><svg aria-hidden="true"><use href="#icon-other"></use></svg></span><h3>其他</h3></div>
         <div class="skill-tags">
           <span>Shader基础</span><span>蒙皮绑定</span><span>手绘贴图</span><span>性能优化</span>
         </div>
@@ -95,9 +151,12 @@
   <section id="about" class="section section-alt">
     <h2 class="section-title">关于我</h2>
     <div class="about-content">
-      <p>17年游戏美术经验，页游、手游、H5、独立游戏、休闲游戏全品类覆盖。</p>
-      <p>以3D动效为核心，兼备3D模型、3D动画及美术管理能力，能独立覆盖从角色动作到UI动效的完整表现层。</p>
-      <p>擅长中小团队协作，适应多风格快速切换，兼顾视觉表现力与移动端性能。</p>
+      <div class="about-copy">
+        <p class="about-lead">17年游戏美术经验，以3D动效为核心，精通角色动画、技能特效、场景氛围及UI动效的全链路表现层设计。深度整合AI工具辅助全流程制作，从概念预演、资产生成到动效落地，以AI提效驱动更高品质的视觉表达。</p>
+        <p>17年游戏美术经验，页游、手游、H5、独立游戏、休闲游戏全品类覆盖。</p>
+        <p>以3D动效为核心，兼备3D模型、3D动画及美术管理能力，能独立覆盖从角色动作到UI动效的完整表现层。</p>
+        <p>擅长中小团队协作，适应多风格快速切换，兼顾视觉表现力与移动端性能。</p>
+      </div>
       <div class="timeline">
         <div class="timeline-item"><span class="year">2021-2025</span> 武汉二月二 · 动效</div>
         <div class="timeline-item"><span class="year">2019-2020</span> 深圳度莫 · H5游戏组长</div>
@@ -162,6 +221,15 @@
     <p>&copy; 2026 王帆</p>
   </footer>
 
+  <!-- 手机端固定导航 -->
+  <nav class="mobile-nav" aria-label="手机端导航">
+    <a href="#home" data-section="home"><svg aria-hidden="true"><use href="#icon-home"></use></svg><span>首页</span></a>
+    <a href="#works" data-section="works"><svg aria-hidden="true"><use href="#icon-works"></use></svg><span>作品展示</span></a>
+    <a href="#skills" data-section="skills"><svg aria-hidden="true"><use href="#icon-skills"></use></svg><span>专业技能</span></a>
+    <a href="#about" data-section="about"><svg aria-hidden="true"><use href="#icon-about"></use></svg><span>关于我</span></a>
+    <a href="#contact" data-section="contact"><svg aria-hidden="true"><use href="#icon-contact"></use></svg><span>联系我</span></a>
+  </nav>
+
   <!-- 灯箱 -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close">&times;</span>
@@ -170,6 +238,6 @@
 
   <script src="media/works.js?v=20260713-h5-portrait"></script>
   <script src="media/settings.js?v=20260701-hideshots"></script>
-  <script src="script.js?v=20260713-game-nav"></script>
+  <script src="script.js?v=20260714-responsive-layout"></script>
 </body>
 </html>
