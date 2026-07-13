@@ -1,4 +1,4 @@
-const GAME_BUILD_VERSION = '20260713-game-nav';
+const GAME_BUILD_VERSION = '20260714-player-tip';
 const params = new URLSearchParams(window.location.search);
 const slug = params.get('game') || '';
 const validSlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug);

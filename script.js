@@ -19,7 +19,7 @@ const DRAFT_KEY = 'portfolio-editor-draft-v1';
 const LEGACY_SORT_KEY = 'portfolio-work-order';
 const LEGACY_HIDE_KEY = 'portfolio-hidden';
 const LEGACY_BILI_KEY = 'portfolio-bilibili';
-const GAME_SHELL_VERSION = '20260713-game-nav';
+const GAME_SHELL_VERSION = '20260714-player-tip';
 
 let draftSettings = editMode ? loadDraftSettings() : null;
 let sortMode = false;
