@@ -380,7 +380,7 @@ function renderGallery(filter = 'all') {
         ? `href="${escapeHtml(gameHref)}" target="_blank" rel="noopener"`
         : `onclick="openLightbox('${work.src.replace(/'/g, "\\'")}', '${work.type}')"`;
       return `
-        <${itemTag} class="gallery-item" draggable="${sortMode}" data-type="${work.type}" data-src="${work.src}" data-index="${i}"
+        <${itemTag} class="gallery-item${isGame && work.coverAspect === 'portrait' ? ' gallery-item--portrait' : ''}" draggable="${sortMode}" data-type="${work.type}" data-src="${work.src}" data-index="${i}"
              ${launchAttr}>
           ${sortMode ? '<button class="delete-btn" title="从草稿中删除此作品">&times;</button>' : ''}
           ${sortMode ? '<div class="drag-handle">⠿</div>' : ''}
@@ -491,18 +491,23 @@ function renderGameColumn(filter) {
     return;
   }
 
-  gameList.innerHTML = games.map(work => `
-    <a class="game-entry" href="${escapeHtml(getGameLaunchSrc(work.src))}" target="_blank" rel="noopener">
-      <span class="game-entry-media">
-        ${work.thumbnail
-          ? `<img src="${work.thumbnail}" alt="${escapeHtml(work.title)}" loading="lazy">`
-          : `<span class="game-entry-fallback">${escapeHtml(work.title)}</span>`
-        }
-      </span>
-      <span class="game-entry-title">${escapeHtml(work.title)}</span>
-      ${work.packageSize ? `<span class="game-entry-size">包体 ${escapeHtml(work.packageSize)}</span>` : ''}
-    </a>
-  `).join('');
+  gameList.innerHTML = games.map(work => {
+    const portraitClass = work.coverAspect === 'portrait' ? ' game-entry--portrait' : '';
+    return `
+      <a class="game-entry${portraitClass}" href="${escapeHtml(getGameLaunchSrc(work.src))}" target="_blank" rel="noopener">
+        <span class="game-entry-media">
+          ${work.thumbnail
+            ? `<img src="${work.thumbnail}" alt="${escapeHtml(work.title)}" loading="lazy">`
+            : `<span class="game-entry-fallback">${escapeHtml(work.title)}</span>`
+          }
+          <span class="game-entry-play" aria-hidden="true"></span>
+          <span class="game-entry-meta">
+            <span class="game-entry-title">${escapeHtml(work.title)}</span>
+            ${work.packageSize ? `<span class="game-entry-size">包体 ${escapeHtml(work.packageSize)}</span>` : ''}
+          </span>
+        </span>
+      </a>`;
+  }).join('');
 }
 
 function renderGameCover(work) {

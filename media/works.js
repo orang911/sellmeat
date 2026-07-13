@@ -3,7 +3,8 @@
     src: 'media/games/block1010/index.html',
     type: 'game',
     title: '方块1010',
-    thumbnail: 'media/games/block1010/game-logo.png',
+    thumbnail: 'media/games/block1010/cover-portrait.webp',
+    coverAspect: 'portrait',
     packageSize: '3.29 MB'
   },
   {
@@ -24,7 +25,8 @@
     src: 'media/games/animal-puzzle/index.html',
     type: 'game',
     title: '动物拼图',
-    thumbnail: 'media/games/animal-puzzle/game-logo.jpg',
+    thumbnail: 'media/games/animal-puzzle/cover-portrait.webp',
+    coverAspect: 'portrait',
     packageSize: '2.32 MB'
   },
   {
@@ -45,7 +47,8 @@
     src: 'media/games/mergen-to10/index.html',
     type: 'game',
     title: '合并到 10',
-    thumbnail: 'media/games/mergen-to10/game-logo.png',
+    thumbnail: 'media/games/mergen-to10/cover-portrait.webp',
+    coverAspect: 'portrait',
     packageSize: '2.20 MB'
   },
   {
@@ -66,7 +69,8 @@
     src: 'media/games/classic-2048/index.html',
     type: 'game',
     title: '经典 2048',
-    thumbnail: 'media/games/classic-2048/game-logo.jpg',
+    thumbnail: 'media/games/classic-2048/cover-portrait.webp',
+    coverAspect: 'portrait',
     packageSize: '2.44 MB'
   },
   {
