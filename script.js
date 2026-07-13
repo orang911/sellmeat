@@ -19,7 +19,7 @@ const DRAFT_KEY = 'portfolio-editor-draft-v1';
 const LEGACY_SORT_KEY = 'portfolio-work-order';
 const LEGACY_HIDE_KEY = 'portfolio-hidden';
 const LEGACY_BILI_KEY = 'portfolio-bilibili';
-const GAME_SHELL_VERSION = '20260520-h5-shell';
+const GAME_SHELL_VERSION = '20260713-game-nav';
 
 let draftSettings = editMode ? loadDraftSettings() : null;
 let sortMode = false;
@@ -38,7 +38,9 @@ function escapeHtml(value) {
 }
 
 function getGameLaunchSrc(src) {
-  return src.includes('?') ? `${src}&v=${GAME_SHELL_VERSION}` : `${src}?v=${GAME_SHELL_VERSION}`;
+  const match = /^media\/games\/([a-z0-9]+(?:-[a-z0-9]+)*)\/index\.html$/.exec(src);
+  if (!match) return src;
+  return `game-player.html?game=${encodeURIComponent(match[1])}&v=${GAME_SHELL_VERSION}`;
 }
 
 function uniqueStrings(value) {

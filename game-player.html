@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <title>H5小游戏 — 王帆作品集</title>
+  <link rel="stylesheet" href="game-player.css?v=20260713-game-nav">
+</head>
+<body>
+  <header class="game-nav">
+    <a class="game-nav-back" href="index.html#works" aria-label="返回作品主页">
+      <span class="game-nav-arrow" aria-hidden="true">←</span>
+      <span class="game-nav-back-label">返回作品主页</span>
+      <span class="game-nav-back-label-mobile">主页</span>
+    </a>
+    <strong class="game-nav-title" id="gameTitle">H5小游戏</strong>
+    <span class="game-nav-brand" aria-hidden="true">WF · H5</span>
+  </header>
+
+  <main class="game-stage">
+    <div class="game-loading" id="gameLoading" role="status">
+      <span class="game-loading-dot" aria-hidden="true"></span>
+      正在加载游戏…
+    </div>
+    <iframe
+      class="game-player-frame"
+      id="gameFrame"
+      title="H5小游戏"
+      allow="fullscreen; gamepad; autoplay"
+      allowfullscreen
+    ></iframe>
+    <section class="game-error" id="gameError" hidden>
+      <h1>游戏入口无效</h1>
+      <p>没有找到对应的小游戏，请返回作品主页重新选择。</p>
+      <a href="index.html#works">返回作品主页</a>
+    </section>
+  </main>
+
+  <script src="media/works.js?v=20260713-game-nav"></script>
+  <script src="game-player.js?v=20260713-game-nav"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+:root {
+  color-scheme: dark;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  background: #050505;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 56px minmax(0, 1fr);
+  height: 100vh;
+  height: 100dvh;
+  color: #f5f5f5;
+  background: #050505;
+}
+
+.game-nav {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 0 max(18px, env(safe-area-inset-left));
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(17,17,17,0.96);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.34);
+}
+
+.game-nav-back {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 8px;
+  min-width: 0;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 9px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  background: rgba(255,255,255,0.06);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.game-nav-back:hover {
+  border-color: #e84d55;
+  background: rgba(232,77,85,0.16);
+  transform: translateX(-2px);
+}
+
+.game-nav-back:focus-visible {
+  outline: 3px solid rgba(232,77,85,0.46);
+  outline-offset: 2px;
+}
+
+.game-nav-arrow {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 0;
+}
+
+.game-nav-back-label-mobile { display: none; }
+
+.game-nav-title {
+  max-width: min(42vw, 420px);
+  overflow: hidden;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-nav-brand {
+  justify-self: end;
+  color: #e84d55;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.game-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #050505;
+}
+
+.game-player-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #050505;
+}
+
+.game-player-frame[hidden] { display: none; }
+
+.game-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  background: #050505;
+  pointer-events: none;
+}
+
+.game-loading[hidden] { display: none; }
+
+.game-loading-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e84d55;
+  box-shadow: 0 0 0 0 rgba(232,77,85,0.48);
+  animation: game-loading-pulse 1.25s infinite;
+}
+
+.game-error {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: #fff;
+  text-align: center;
+  background: #101010;
+}
+
+.game-error[hidden] { display: none; }
+.game-error h1 { margin: 0 0 12px; font-size: 24px; }
+.game-error p { margin: 0 0 22px; color: rgba(255,255,255,0.64); }
+.game-error a {
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  background: #e84d55;
+}
+
+@keyframes game-loading-pulse {
+  70% { box-shadow: 0 0 0 9px rgba(232,77,85,0); }
+  100% { box-shadow: 0 0 0 0 rgba(232,77,85,0); }
+}
+
+@media (max-width: 600px) {
+  body { grid-template-rows: 50px minmax(0, 1fr); }
+  .game-nav {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px;
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-left: max(12px, env(safe-area-inset-left));
+  }
+  .game-nav-back { padding: 8px 10px; font-size: 13px; }
+  .game-nav-back-label { display: none; }
+  .game-nav-back-label-mobile { display: inline; }
+  .game-nav-title { max-width: none; font-size: 14px; text-align: right; }
+  .game-nav-brand { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-nav-back { transition: none; }
+  .game-loading-dot { animation: none; }
+}

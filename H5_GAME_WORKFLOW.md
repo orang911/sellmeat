@@ -131,10 +131,16 @@ http://127.0.0.1:8765/index.html#works
 http://127.0.0.1:8765/index.html?edit
 ```
 
-游戏直达地址：
+游戏原始构建直达地址（用于排查游戏本体）：
 
 ```text
 http://127.0.0.1:8765/media/games/<game-slug>/index.html
+```
+
+带顶部导航栏的作品集入口（首页小游戏卡片使用此地址）：
+
+```text
+http://127.0.0.1:8765/game-player.html?game=<game-slug>
 ```
 
 ## 验证清单
