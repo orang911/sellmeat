@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>你死了，还要上班</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <aside class="side-panel" aria-label="游戏状态">
+        <section class="brand-block">
+          <p class="eyebrow">阴阳中转驿站</p>
+          <h1>你死了，还要上班</h1>
+          <div class="scene-line">
+            <p id="sceneTag" class="scene-tag">S00</p>
+            <p id="casePhase" class="phase-tag">入职</p>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <h2>长期档案</h2>
+          <div id="stats" class="stats-grid"></div>
+          <h3>能力</h3>
+          <div id="abilities" class="ability-list"></div>
+        </section>
+
+        <section class="panel-block">
+          <h2>当前案件</h2>
+          <div id="caseRisks" class="risk-list"></div>
+          <div id="incident" class="incident-summary"></div>
+        </section>
+
+        <section class="panel-block">
+          <h2>出勤配置</h2>
+          <div id="inventory" class="inventory-list"></div>
+        </section>
+
+        <section class="panel-block">
+          <h2>术法</h2>
+          <div id="spells" class="spell-list"></div>
+        </section>
+
+        <section class="panel-block">
+          <h2>线索与后果</h2>
+          <div id="flags" class="flag-list"></div>
+        </section>
+
+        <section class="panel-block controls">
+          <button id="saveBtn" type="button">保存</button>
+          <button id="loadBtn" type="button">读取</button>
+          <button id="undoBtn" type="button">回退</button>
+          <button id="restartBtn" type="button">重开</button>
+        </section>
+      </aside>
+
+      <section class="story-panel" aria-live="polite">
+        <div class="story-card">
+          <div class="story-heading">
+            <p id="chapterLabel" class="eyebrow">试玩单元 01</p>
+            <h2 id="sceneTitle"></h2>
+          </div>
+          <div id="storyText" class="story-text"></div>
+          <div id="choices" class="choices"></div>
+        </div>
+
+        <section class="log-panel">
+          <h2>记录</h2>
+          <ol id="historyLog"></ol>
+        </section>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

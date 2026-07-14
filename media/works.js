@@ -87,6 +87,13 @@
     thumbnail: 'media/games/feeding-birds/game-logo.png',
     packageSize: '6.01 MB'
   },
+  {
+    src: 'media/games/ghost-shift/index.html',
+    type: 'game',
+    title: '你死了，还要上班',
+    thumbnail: '',
+    packageSize: '57 KB'
+  },
   { src: 'media/gifs/anim-001.gif', type: 'gif', title: 'GIF 001' },
   { src: 'media/gifs/anim-002.gif', type: 'gif', title: 'GIF 002' },
   { src: 'media/gifs/anim-003.gif', type: 'gif', title: 'GIF 003' },
